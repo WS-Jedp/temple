@@ -1,0 +1,6 @@
+class Personality {
+}
+
+export {
+  Personality
+}
