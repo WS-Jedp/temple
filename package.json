@@ -1,0 +1,42 @@
+{
+  "name": "temple",
+  "version": "0.0.0",
+  "description": "temple is a project in development that will help to the people to have a better managment of their emotions",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon --exec && ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/WS-Jedp/temple.git"
+  },
+  "keywords": [
+    "temple",
+    "emotions",
+    "typescript",
+    "types",
+    "management",
+    "emociones",
+    "manejo",
+    "administracion",
+    "mentalHealth"
+  ],
+  "author": "Juan Esteban Deossa Pertuz <jedp082@gmail.com> (GitHub)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/WS-Jedp/temple/issues"
+  },
+  "homepage": "https://github.com/WS-Jedp/temple#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@types/node": "^14.14.35",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}
