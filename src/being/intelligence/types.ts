@@ -19,7 +19,7 @@ abstract class Intelligence {
    * 
    * @param {Capacity[]} capacities Must receive an Array of capacities that will be relate with the according intelligence
    */
-  constructor(capacities:Capacity[]) {
+  constructor(capacities:Capacity[] = []) {
     this.capacities = capacities
   }
 

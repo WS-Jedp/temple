@@ -4,10 +4,8 @@ class Principle {
 
   protected name:string
   protected description:string
-  protected motivation: Motivation
 
-  constructor(name:string, motivation: Motivation, description: string = '') {
-    this.motivation = motivation
+  constructor(name:string, description: string = '') {
     this.name = name
     this.description = description 
   }

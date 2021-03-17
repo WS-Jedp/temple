@@ -1,4 +1,6 @@
 import { Capacity } from '@Capacity/index'
+import { Fear } from '@Emotion/index'
+import { Love } from '@Feelings/index'
 import { Intelligence } from '@Intelligence/types'
 
 /**
@@ -18,13 +20,13 @@ class Logical extends Intelligence {
    * This property will define the default Capacities that is related with this intelligence
    */
   protected defaultCapacities:Capacity[] = [
-    new Capacity('math', this, 0, 'good', 'good'),
-    new Capacity('logic', this, 0, 'good', 'good'),
-    new Capacity('programming', this, 0, 'good', 'good')
+    new Capacity('math', [this], 0, new Fear(1,1), new Love()),
+    new Capacity('logic', [this], 0, new Fear(1,1), new Love()),
+    new Capacity('programming', [this], 0, new Fear(1,1), new Love())
   ]
 
-  constructor(capacities:Capacity[]) {
-    super(capacities)
+  constructor() {
+    super()
   }
 }
 

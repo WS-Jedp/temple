@@ -1,17 +1,18 @@
-type MotivationType = 'intrinsic' | 'extrincsic' 
+import { Principle } from "@Principle/index"
 
+abstract class Motivation {
+  protected principles:Principle[]
+  protected valencia:number
 
-/**
- * Will let us define the type of a motivation
- */
-interface Motivation {
-  intensity: number;
-  emotion: any;
-  feeling: any;
-  type: MotivationType;
+  constructor(principles:Principle[], valencia:number) {
+
+    this.principles = principles
+    this.valencia = valencia
+
+  }
 }
 
+
 export {
-  MotivationType,
   Motivation
 }

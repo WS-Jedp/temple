@@ -1,13 +1,16 @@
 import { Motivation } from '@Motivation/types'
+import { Feeling } from 'being/feeling/types'
 
 class Will {
 	protected motivation: Motivation
-	protected type: number
-	protected feeling: any
+	protected feelings: Feeling[]
 
-	constructor (motivation:Motivation) {
+	constructor (motivation:Motivation, feelings:Feeling[]) {
 		this.motivation = motivation
-		this.type = 0
-		this.feeling = 'good'
+		this.feelings = feelings
   	}
+}
+
+export {
+	Will
 }
