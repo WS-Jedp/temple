@@ -1,11 +1,8 @@
-import { Will } from './being/will'
-import { Intrinsic } from './being/motivation'
-import { Love } from '@Feelings/index'
+import { DefineTemperament } from './being/temperament/types'
+import { Nervous } from './being/systems/index'
 
-import { Principle } from './being/principle'
+const testNervous = new Nervous(.2, .7, .7, .0, .2)
 
-const learn = new Principle('Learn', 'Never stop learning')
-const love = new Love()
-
-const Study = new Will(new Intrinsic([learn], 9), [love])
-
+const define = new DefineTemperament(testNervous)
+const temperaments = define.defineTemperament()
+console.log(temperaments)
