@@ -1,5 +1,4 @@
-import { Emotion } from '@Emotion/types'
-import { Fear, Happinness } from '../emotions'
+import { Emotion } from '../emotions/base'
 import { Feeling } from './base'
 
 class Love extends Feeling {

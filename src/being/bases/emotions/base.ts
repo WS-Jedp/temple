@@ -1,8 +1,3 @@
-/**
- * The Emotion Abstract class will be the base class for the rest of the emotions.
- * Thanks to his Class we can create the main emotions that can have a being 
- */
-
 type EmotionObject = {
   [key:string]: string | number,
   name:string,

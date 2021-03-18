@@ -6,8 +6,10 @@ import { Intelligence } from '../intelligences/base';
 type CapacityIntelligences = {
   [key:string]: Intelligence
 }
-type CapactyEmotionalValues = {
-  [key:string]: FeelingValues | EmotionValues,
+type CapacityEmotionalValues = {
+  [key:string]: FeelingValues | EmotionValues |undefined,
+  emotion: EmotionValues | undefined,
+  feeling: FeelingValues | undefined
 }
 type CapacityEmotional = {
   [key:string]: Emotion | Feeling,
@@ -72,6 +74,9 @@ type CapacityEmotional = {
     if(this._emotion) return this._emotion
     return undefined
   }
+  public getEmotion():Emotion | undefined {
+    return this._emotion
+  }
 
   // ------ FEELING SECTION -------
    /**
@@ -93,19 +98,20 @@ type CapacityEmotional = {
     public get feeling():Feeling | undefined {
       return this._feeling
     }
-
+    public getFeeling():Feeling | undefined {
+      return this._feeling
+    }
+    
   // ------ EMOTIONAL VALUES -------
     /**
      * Get the emotional values of the capacity
      * @returns {CapactyEmotionalValues | undefined} Returns the an Obejct with the emotional values of the capacity (Emotion and feeling) in case that there is no Emotion or Feeling the value returned will undefined
      */
-    public getEmotionalValues():CapactyEmotionalValues | undefined {
-      if(this._emotion && this._feeling) {
+    public getEmotionalValues():CapacityEmotionalValues {
         return {
-          [this._emotion.name]: this._emotion.getEmotionalValues(),
-          [this._feeling.name]: this._feeling.getEmotionalValues()
+          emotion: this._emotion?.getEmotionalValues(),
+          feeling: this._feeling?.getEmotionalValues()
         }
-      }
     }
   
     /**

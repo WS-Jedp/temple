@@ -13,9 +13,8 @@ const math = Math.getInstance()
 const happinness = new Happinness(1,1) 
 run.skill = .9
 run.getIntelligences()
-run.setEmotionalValues({
-  emotion: happinness,
-  feeling: new Love([happinness], 1, 1)
-})
+
+run.setEmotion(happinness)
+const emoRun = run.emotion
 console.log(run.getEmotionalValues())
 
