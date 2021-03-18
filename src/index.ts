@@ -1,22 +1,22 @@
-import { DefineTemperament } from './being/temperament/types'
-import { Nervous } from './being/systems/index'
-import { AmorphousCharacter } from './being/character/extends'
-
-import { DefineCharacter } from './being/character/extends'
-
-
-// const testNervous = new Nervous(.2, .7, .7, .0, .2)
-
-// const define = new DefineTemperament(testNervous)
-// const temperaments = define.defineTemperament()
-// console.log(temperaments)
-
-// const old = AmorphousCharacter.getInstance()
-// const new_character = AmorphousCharacter.getInstance()
-// console.log(old === new_character)
-
-const character = new DefineCharacter({emotionality: .9, activity: .9, repercussion: .2})
-console.log(character.defineCharacter())
+import { Being } from './being'
+import { Nervous } from './being/systems'
+import { Math } from './being/capacity'
+import { Capacity } from './being/capacity/types'
+import { Logical } from './being/intelligence'
+import { Extrinsic, Intrinsic } from './being/motivation'
+import { Principle } from './being/principle'
+import { Intelligence } from '@Intelligence/types'
+import { Love } from './being/feeling'
+import { Happinness } from './being/emotion/index'
 
 
+const me = new Being()
+const love = new Love([new Happinness(9, 3)], 3, 9) 
+const principle = new Principle('Never give up', love)
+const intrinsic = new Intrinsic({principles: [principle], valencia: .9})
 
+const wills = me.createWill({name: 'Travel', motivation: intrinsic, feelings: [love] })
+const principles = me.addPrinciple(principle)
+
+console.log(wills)
+console.log(principles[0].getName())

@@ -1,13 +1,17 @@
-import { Motivation } from "@Motivation/types";
+import { Feeling } from "@Feelings/types";
 
 class Principle {
 
   protected name:string
-  protected description:string
+  protected feeling:Feeling
 
-  constructor(name:string, description: string = '') {
+  constructor(name:string, feeling: Feeling) {
     this.name = name
-    this.description = description 
+    this.feeling = feeling
+  }
+
+  public getName():string {
+    return this.name
   }
 }
 

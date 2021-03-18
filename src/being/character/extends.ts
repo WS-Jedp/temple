@@ -237,8 +237,8 @@ class DefineCharacter {
   }
 
   public selectCharacter(affinity:Affinity):Character {
-    const arrayAffinity = Object.values(affinity).reduce((prev, curr) => prev.value <= curr.value ? prev : curr)
-    const mainCharacter = this.characteres[arrayAffinity.name]
+    const characterAffinity = Object.values(affinity).reduce((prev, curr) => prev.value <= curr.value ? prev : curr)
+    const mainCharacter = this.characteres[characterAffinity.name]
     return mainCharacter
   }
 
@@ -253,5 +253,6 @@ export {
   CholericCharacter,
   SentimentalCharacter,
   NervousCharacter,
-  DefineCharacter
+  DefineCharacter,
+  BeingCharacter
 }

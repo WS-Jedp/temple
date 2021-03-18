@@ -1,5 +1,6 @@
 import { Capacity } from './types'
-import { Logical } from '@Intelligence/index'
+import { Logical } from '../intelligence/index'
+import { Intelligence } from '@Intelligence/types'
 
 
 /**
@@ -9,12 +10,9 @@ import { Logical } from '@Intelligence/index'
  */
 class Math extends Capacity {
   private static instance:Math
-
+  private static defaultIntelligences:Intelligence[] = []
   private constructor(){
     super('Math')
-    this.intelligences = [
-      Logical.getInstance()
-    ]
   }
 
   /**
@@ -25,19 +23,35 @@ class Math extends Capacity {
   public static getInstance():Math {
     if(!Math.instance) {
       Math.instance = new Math()
+
+      // Adding the default intelligences
+      Math.setDefaultIntelligences(Logical.getInstance())
     }
 
-    return Math.instance
+    return this.instance
+  }
+
+  /**
+   * Defines the default intelligences that are relate to the capacity
+   * 
+   * @param {Capacity[]} intelligences Add all the Intelligences that are relate to the capacity
+   */
+  public static setDefaultIntelligences(...intelligences:Intelligence[]):void {
+    intelligences.forEach(intelligence => {
+      this.defaultIntelligences.push(intelligence)
+    })
+  }
+  public static getDefaultIntelligences():Intelligence[] {
+    return Math.defaultIntelligences
   }
 }
 
 class Reasoning extends Capacity {
   private static instance:Reasoning
+  private static defaultIntelligences:Intelligence[] = []
+
   private constructor() {
     super('Reasoning')
-    this.intelligences = [
-      Logical.getInstance()
-    ]
   }
 
   /**
@@ -48,8 +62,22 @@ class Reasoning extends Capacity {
   public static getInstance() {
     if(!Reasoning.instance) {
       Reasoning.instance = new Reasoning()
+
+      // Adding the default intelligences
+      Reasoning.setDefaultIntelligences(Logical.getInstance())
     }
-    return Reasoning.instance
+    return this.instance
+  }
+
+  /**
+   * Defines the default intelligences that are relate to the capacity
+   * 
+   * @param {Capacity[]} intelligences Add all the Intelligences that are relate to the capacity
+   */
+   public static setDefaultIntelligences(...intelligences:Intelligence[]):void {
+    intelligences.forEach(intelligence => {
+      this.defaultIntelligences.push(intelligence)
+    })
   }
   
 }

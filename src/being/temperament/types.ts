@@ -97,15 +97,22 @@ class CholericTemperament extends Temperament {
 type Affinity = {
   [key:string]: {value: number | string, temperament: string},
 }
+type TemperamentsObject = {
+  [key:string]: Temperament,
+  Sanguine: Temperament,
+  Melancholic: Temperament,
+  Choleric: Temperament,
+  Phlegmatic: Temperament
+}
 class DefineTemperament {  
 
   protected system:Nervous
 
-  protected temperaments = {
-    sanguine: SanguineTemperament.getInstance(),
-    melancholic: MelancholicTemperament.getInstance(),
-    choleric: CholericTemperament.getInstance(),
-    phlematic: PhlegmaticTemperament.getInstance()
+  protected temperaments:TemperamentsObject = {
+    "Sanguine": SanguineTemperament.getInstance(),
+    "Melancholic": MelancholicTemperament.getInstance(),
+    "Choleric": CholericTemperament.getInstance(),
+    "Phlegmatic": PhlegmaticTemperament.getInstance()
   }
 
   constructor(system:Nervous) {
@@ -156,26 +163,13 @@ class DefineTemperament {
    * @param {Affinity} affinity The Affinity object is the result of defineTemperament() where execute the Affinity algorithm 
    * @returns {Temperament} Will return the main temperament of the being according to the algorithm
    */
-  private selectTemperament(affinity:Affinity):Temperament | undefined {
-
+  private selectTemperament(affinity:Affinity):Temperament {
     const arrayAffinity = Object.values(affinity)
     
     // Will identify which is the temperament that the being is relate to, between lower the value more affinity have with that temperament
-    const mainTemperament = arrayAffinity.reduce((prev, curr) => prev.value < curr.value ? prev : curr)
-
-    switch (mainTemperament.temperament) {
-      case "Melancholic":
-        return this.temperaments.melancholic
-        
-      case "Choleric":
-        return this.temperaments.choleric
-
-      case "Phlegmatic":
-        return this.temperaments.phlematic
-      case "Sanguine":
-        return this.temperaments.sanguine     
-    }
-
+    const temperamentAffinity = arrayAffinity.reduce((prev, curr) => prev.value < curr.value ? prev : curr)
+    const mainCharacter = this.temperaments[temperamentAffinity.temperament]
+    return mainCharacter
   } 
 
 }

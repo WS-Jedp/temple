@@ -13,7 +13,7 @@ import { Intelligence } from '@Intelligence/types';
  */
  class Capacity {
 
-  private name:string
+  protected name:string
   
   protected intelligences:Intelligence[] = []
   protected feeling: Feeling | undefined
@@ -108,11 +108,11 @@ import { Intelligence } from '@Intelligence/types';
   }
 
   /**
-   * Will add a new Intelligence to the array of intelligences relate to the capacity 
+   * Will remove a  Intelligence of the array of intelligences relate to the capacity 
    * 
    * @param {Intelligence} intelleigence The new intelligence that relate to the capacities
    */
-  public remove(name:string):Intelligence[] {
+  public removeIntelligence(name:string):Intelligence[] {
     this.intelligences.forEach((intelligence, index) => {
       intelligence.getName() === name && delete this.intelligences[index]
     });

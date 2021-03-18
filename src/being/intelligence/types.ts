@@ -63,7 +63,7 @@ abstract class Intelligence {
    */
   removeCapacity(value:string):Capacity[] {
 
-    const newCapacities = this.capacities.filter(capacity =>  capacity.name !== value)
+    const newCapacities = this.capacities.filter(capacity =>  capacity.getName() !== value)
     this.capacities = newCapacities
 
     return this.capacities
