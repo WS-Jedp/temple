@@ -1,6 +1,6 @@
-import { Capacity } from '@Capacity/types'
-import { Math, Reasoning } from '../capacity/index'
-import { Intelligence } from './types'
+import { Capacity } from '../capacities/base'
+import { Math, Reasoning } from '../capacities/index'
+import { Intelligence } from './base'
 
 /**
  * The Logic Intelligence will is one of the 8 types of intelligences that can have a being. This one will help to the being to be more comfortable with activities or actions related to:

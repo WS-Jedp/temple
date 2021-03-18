@@ -1,4 +1,4 @@
-import { Emotion } from './types'
+import { Emotion } from './base'
 
 /**
  * Fear class

@@ -1,6 +1,6 @@
-import { Capacity } from './types'
-import { Logical } from '../intelligence/index'
-import { Intelligence } from '@Intelligence/types'
+import { Capacity } from './base'
+import { Logical } from '../intelligences/index'
+import { Intelligence } from '../intelligences/base'
 
 
 /**

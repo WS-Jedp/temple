@@ -1,4 +1,4 @@
-import { Emotion } from "@Emotion/types";
+import { Emotion } from "../emotions/base";
 
 abstract class Feeling {
   protected emotions:Emotion[]

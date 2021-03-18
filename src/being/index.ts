@@ -1,8 +1,8 @@
 import { Math } from '@Capacity/index'
-import { Will, WillObject } from './will'
+import { Will, WillObject } from './bases/wills/base'
 import { Intelligence } from '@Intelligence/types';
-import { Principle } from './principle/index'
-import { Personality } from './personality';
+import { Principle } from './bases/principle/base'
+import { Personality } from './bases/personality';
 import { Capacity } from '@Capacity/types';
 import { Nervous,  } from './systems';
 import { Feeling } from './feeling/types'

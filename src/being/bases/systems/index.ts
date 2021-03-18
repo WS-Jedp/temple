@@ -1,4 +1,4 @@
-import { System } from './types'
+import { System } from './base'
 
 type CharacteristicsNervousSystem = {
   [key:string]: number;

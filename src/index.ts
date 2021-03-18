@@ -1,13 +1,13 @@
 import { Being } from './being'
-import { Nervous } from './being/systems'
-import { Math } from './being/capacity'
-import { Capacity } from './being/capacity/types'
-import { Logical } from './being/intelligence'
-import { Extrinsic, Intrinsic } from './being/motivation'
-import { Principle } from './being/principle'
-import { Intelligence } from '@Intelligence/types'
-import { Love } from './being/feeling'
-import { Happinness } from './being/emotion/index'
+import { Nervous } from './being/bases/systems'
+import { Math } from './being/bases/capacities'
+import { Capacity } from './being/bases/capacities/base'
+import { Logical } from './being/bases/intelligences'
+import { Extrinsic, Intrinsic } from './being/bases/motivations'
+import { Principle } from './being/bases/principle/base'
+import { Intelligence } from './being/bases/intelligences/base'
+import { Love } from './being/bases/feelings'
+import { Happinness } from './being/bases/emotions/index'
 
 
 const me = new Being()

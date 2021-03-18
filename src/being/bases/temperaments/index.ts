@@ -1,5 +1,5 @@
-import { Temperament } from './index'
-import { Nervous } from "being/systems"
+import { Temperament } from './base'
+import { Nervous } from "../systems"
 
 class SanguineTemperament extends Temperament {  
   private static instance:SanguineTemperament

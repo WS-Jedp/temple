@@ -1,9 +1,9 @@
-import { Intelligence } from '@Intelligence/types'
-import { Character } from '../character/base'
-import { BeingCharacter, DefineCharacter } from '../character/extends'
+import { Intelligence } from '../intelligences/base'
+import { Character } from '../characters/base'
+import { BeingCharacter, DefineCharacter } from '../characters'
 import { Nervous } from '../systems'
-import { Temperament } from '../temperament'
-import { DefineTemperament } from '../temperament/types'
+import { Temperament } from '../temperaments/base'
+import { DefineTemperament } from '../temperaments'
 
 type IntelligencesPersonality = {
   primary: Intelligence | undefined,

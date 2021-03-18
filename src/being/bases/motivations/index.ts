@@ -1,5 +1,5 @@
-import { Principle } from '@Principle/index';
-import { Motivation } from './types'
+import { Principle } from '../principle/base';
+import { Motivation } from './base'
 
 
 type MotivationObject = {
