@@ -1,27 +1,37 @@
-import { Emotion } from '@Emotion/types';
-import { Feeling } from '@Feelings/types';
-import { Intelligence } from '@Intelligence/types';
+import { Emotion } from '../emotions/base';
+import { Feeling } from '../feelings/base';
+import { Intelligence } from '../intelligences/base';
+
+
+type CapacityIntelligences = {
+  [key:string]: Intelligence
+}
 
 /**
- * The Capacity class will define the capacities that can have a being, each capacity must have his own
+ * The Capacity class will define the capacities that can have a being, each capacity should be relate to:
  * 
- * - name = identifier of the capacity
- * - intelligence = Intelligence related
- * - skill = hability of the capacity
- * - emotion
- * - feeling
+ * - @module Intelligence Will help us to idenfity which kind of Intelligence is relate to the capacity
+ * - @module Emotion Will help us to identify which Emotion can feel a Being with the capacity
+ * - @module Feeling Will help us to idenfit which Feeling can feel a Being with the capacity
+ * 
+ * @class
  */
  class Capacity {
 
-  protected name:string
+   protected _name:string
+   private _emotion:Emotion | undefined
+   protected _skill: number = 0
   
-  protected intelligences:Intelligence[] = []
+  protected intelligences:CapacityIntelligences = {}
   protected feeling: Feeling | undefined
-  protected emotion:Emotion | undefined
-  protected skill: number = 0
   
+  /**
+   * Create a new instance of Capacity, helpful to create a more personalize Capacity according to the being
+   * 
+   * @param {string} name Define the name of the Capacity for can be idetified easier  
+   */
   public constructor(name: string) {
-    this.name = name
+    this._name = name
   }
 
   /**
@@ -29,20 +39,30 @@ import { Intelligence } from '@Intelligence/types';
    * 
    * @returns {string} Returns the name of the current capacity
    */
-  public getName() {
-    return this.name
+  public get name() {
+    return this._name
   }
 
   // ------ EMOTION SECTION -------
   /**
-   * Define the Emotion that that have the being about the capacity 
+   * Define the Emotion that is relate with the capacity 
    * 
    * @param {Emotion} emotion Emotion that will define the new Emotion that cause the capacity  
-   * @returns 
+   * @returns {Emotion} Return the Emotion that was defined to the capacity
    */
-  public setEmotion(emotion:Emotion):Capacity {
-    this.emotion = emotion
-    return this
+  public setEmotion(emotion:Emotion):Emotion {
+    this._emotion = emotion
+    return this._emotion
+  }
+
+  /**
+   * Get the defined emotion of the capacity
+   * 
+   * @returns {Emotion | undefined} Returns the emotions defined to the capacity, if there is no emotion defined yet the return will be undefined
+   */
+  public get emotion():Emotion | undefined {
+    if(this._emotion) return this._emotion
+    return undefined
   }
 
   // ------ FEELING SECTION -------
@@ -57,18 +77,22 @@ import { Intelligence } from '@Intelligence/types';
       return this
     }
 
+    
+
 
   // ------ SKILLS SECTION -------
 
   /**
-   * Set the value of the skill of the capacity
+   * Set the new value of the skill of the capacity
    * 
-   * @param {number} skill Define the new value of the Skill 
-   * @returns 
+   * @param {number} skill Float from 0 to 1, Defining the new value of the Skill 
    */
-  public setSKill(skill:number):number {
-    this.skill = skill
-    return this.skill
+  public set skill(skill:number) {
+    if(skill < 1 && skill > 0) {
+      this._skill = skill
+    } else {
+      throw new Error('The value of the skill must be between 0 and 1')
+    } 
   }
 
   /**
@@ -81,7 +105,6 @@ import { Intelligence } from '@Intelligence/types';
     this.skill += value
     return this.skill
   }
-
 
   /**
    * Will help us to decrease the skill of the capacity on the being
@@ -98,34 +121,34 @@ import { Intelligence } from '@Intelligence/types';
   // ------ INTELLIGENCES SECTION -------
 
   /**
-   * Will add a new Intelligence to the array of intelligences relate to the capacity 
+   * Will add a one or multiple new Intelligences to the array of intelligences relate to the capacity 
    * 
-   * @param {Intelligence} intelleigence The new intelligence that relate to the capacities
-   */
-  public addIntelligence(intelleigence:Intelligence):Intelligence[] {
-    this.intelligences.push(intelleigence)
+   * @param {Intelligence[]} intelleigences Add all the new Intelligences that are related to the capacity   
+   * */
+  public addIntelligence(...intelligences:Intelligence[]):CapacityIntelligences {
+    intelligences.forEach(intelligence => {
+      this.intelligences[intelligence.getName()] = intelligence
+    });
     return this.intelligences
   }
 
   /**
    * Will remove a  Intelligence of the array of intelligences relate to the capacity 
    * 
-   * @param {Intelligence} intelleigence The new intelligence that relate to the capacities
+   * @param {string} name The exact name of the Intelligence that we need to delete
    */
-  public removeIntelligence(name:string):Intelligence[] {
-    this.intelligences.forEach((intelligence, index) => {
-      intelligence.getName() === name && delete this.intelligences[index]
-    });
+  public removeIntelligence(name:string):CapacityIntelligences {
+    delete this.intelligences[name]
     return this.intelligences
   }
 
   /**
-   * Helpful to know the Intelligences related to the capacity
+   * Helpful to know the Intelligences that are related to the capacity
    * 
    * @returns {Intelligence[]} Will return all the intelligences that are related to the capacity
    */
-  public getIntelligences(){
-    return this.intelligences
+  public getIntelligences():Intelligence[]{
+    return Object.values(this.intelligences)
   }
 }
 export {
