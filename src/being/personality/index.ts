@@ -1,6 +1,6 @@
 import { Intelligence } from '@Intelligence/types'
-import { Character } from 'being/character'
-import { Temparament } from 'being/temperament'
+import { Character } from 'being/character/base'
+import { Temperament } from 'being/temperament'
 
 type IntelligencesPersonality = {
   primary: Intelligence,
@@ -10,7 +10,7 @@ type IntelligencesPersonality = {
 class Personality {
 
   protected character:Character | undefined
-  protected temparament:Temparament | undefined
+  protected temparament:Temperament | undefined
   protected intelligences:IntelligencesPersonality | undefined
 
   

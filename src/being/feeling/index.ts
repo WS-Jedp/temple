@@ -4,8 +4,8 @@ import { Feeling } from './types'
 
 class Love extends Feeling {
 
-  constructor(){
-    super([new Fear(1, 1),new Happinness(1, 1)], 1, 1)
+  constructor(emotions:Emotion[], valencia:number, intensity: number){
+    super(emotions, valencia, intensity)
   }
 
 }

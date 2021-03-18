@@ -1,6 +1,4 @@
-import { Capacity } from '@Capacity/index'
-import { Fear } from '@Emotion/index'
-import { Love } from '@Feelings/index'
+import { Math, Reasoning } from '@Capacity/index'
 import { Intelligence } from '@Intelligence/types'
 
 /**
@@ -16,17 +14,30 @@ import { Intelligence } from '@Intelligence/types'
  */
 class Logical extends Intelligence {
 
-  /**
-   * This property will define the default Capacities that is related with this intelligence
-   */
-  protected defaultCapacities:Capacity[] = [
-    new Capacity('math', [this], 0, new Fear(1,1), new Love()),
-    new Capacity('logic', [this], 0, new Fear(1,1), new Love()),
-    new Capacity('programming', [this], 0, new Fear(1,1), new Love())
-  ]
+  // The current space on memory of our Instance
+  private static instance: Logical
 
-  constructor() {
-    super()
+  private constructor() {
+    super('Logical')
+
+    // Add the default capacities that are relate to the Logical Intelligence
+    this.capacities = [
+      Math.getInstance(),
+      Reasoning.getInstance()
+    ]
+  }
+
+  /**
+   * Get the only instance of the Logical Intelligence
+   * 
+   * @returns {Logical} Return the unique instance of the Intelligence
+   */
+  public static getInstance():Logical {
+    if(!Logical.instance) {
+      Logical.instance = new Logical()
+    }
+
+    return this.instance
   }
 }
 

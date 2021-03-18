@@ -1,4 +1,4 @@
-import { Capacity } from '@Capacity/index'
+import { Capacity } from '@Capacity/types'
 
 /**
  * The Intelligence abstract class will define the main structure of the 8 types of intelligences that can have a being
@@ -13,24 +13,44 @@ import { Capacity } from '@Capacity/index'
  * - Interpersonal
  */
 abstract class Intelligence {
-  protected capacities:Capacity[]
+  private name:string
+  protected capacities:Capacity[] = []
 
   /**
+   * Create a new intelligence that can have a being
    * 
-   * @param {Capacity[]} capacities Must receive an Array of capacities that will be relate with the according intelligence
+   * @param {string} name Create the name of the Intelligence, will work as an Identifier of the Intelligence 
    */
-  constructor(capacities:Capacity[] = []) {
-    this.capacities = capacities
+  constructor(name:string) {
+    this.name = name
   }
 
-  
+  /**
+   * Get and know the name of the current Intelligence 
+   * 
+   * @returns {string} Will return the name of the current Intelligence
+   */
+   public getName():string {
+    return this.name
+  }
+
+
+  /**
+   * Get all the capacities that relate to the intelligence
+   * 
+   * @returns {Capacity[]} Returns an array with all the capacities of the Intelligence
+   */
+  public getCapacities():Capacity[] {
+    return this.capacities
+  }
+
   /**
    * Add a new capacity to the Intelligence 
    * 
    * @param {Capacity} capacity Define the new capacity that will be added to the Intelligence
    * @returns {Capacity[]} Will return all the current capacities of the Intelligence
    */
-  add(capacity:Capacity):Capacity[] {
+  addCapacity(capacity:Capacity):Capacity[] {
     this.capacities.push(capacity)
     return this.capacities
   }
@@ -41,7 +61,7 @@ abstract class Intelligence {
    * @param {string} value Pass the name of the Capacity that you want to remove
    * @returns {Capacity[]} Will return the new current capacities that have the Intelligence
    */
-  remove(value:string):Capacity[] {
+  removeCapacity(value:string):Capacity[] {
 
     const newCapacities = this.capacities.filter(capacity =>  capacity.name !== value)
     this.capacities = newCapacities

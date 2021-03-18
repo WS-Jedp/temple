@@ -2,7 +2,7 @@ import { Temperament } from './index'
 import { Nervous } from "being/systems"
 
 class SanguineTemperament extends Temperament {  
-
+  private static instance:SanguineTemperament
   protected characteristics = {
     sensibility: [0.7, 1],
     activity: [0, .3], 
@@ -11,14 +11,25 @@ class SanguineTemperament extends Temperament {
     adaptability: [.7, 1]
   }
 
-  constructor() {
+  private constructor() {
     super('Sanguine')
+  }
+
+  /**
+   * 
+   * @returns {SanguineTemperament} Returns the unique instance of Sanguine Temperament
+   */
+  public static getInstance():SanguineTemperament {
+    if(!SanguineTemperament.instance) {
+      SanguineTemperament.instance = new SanguineTemperament()
+    }
+    return this.instance
   }
 
 }
 
 class PhlegmaticTemperament extends Temperament {  
-
+  private static instance:PhlegmaticTemperament
   protected characteristics = {
     sensibility: [0, .3],
     activity: [.7, 1], 
@@ -27,14 +38,21 @@ class PhlegmaticTemperament extends Temperament {
     adaptability: [0, .3]
   }
 
-  constructor() {
+  private constructor() {
     super('Phlegmatic')
+  }
+
+  public static getInstance():PhlegmaticTemperament {
+    if(!PhlegmaticTemperament.instance) {
+      PhlegmaticTemperament.instance = new PhlegmaticTemperament()
+    }
+    return this.instance
   }
 
 }
 
 class MelancholicTemperament extends Temperament {  
-
+  private static instance:MelancholicTemperament
   protected characteristics = {
     sensibility: [.7, 1],
     activity: [.7, 1], 
@@ -42,15 +60,20 @@ class MelancholicTemperament extends Temperament {
     reactivity: [0, .3],
     adaptability: [0, .3]
   }
-
   constructor() {
     super('Melancholic')
+  }
+  public static getInstance():MelancholicTemperament {
+    if(!MelancholicTemperament.instance) {
+      MelancholicTemperament.instance = new MelancholicTemperament()
+    }
+    return this.instance
   }
 
 }
 
 class CholericTemperament extends Temperament {  
-
+  private static instance:CholericTemperament
   protected characteristics = {
     sensibility: [0, .3],
     activity: [.7, 1], 
@@ -58,9 +81,14 @@ class CholericTemperament extends Temperament {
     reactivity: [.7, 1],
     adaptability: [.7, 1]
   }
-
   constructor() {
     super('Choleric')
+  }
+  public static getInstance():CholericTemperament {
+    if(!CholericTemperament.instance) {
+      CholericTemperament.instance = new CholericTemperament()
+    }
+    return this.instance
   }
 
 }
@@ -74,10 +102,10 @@ class DefineTemperament {
   protected system:Nervous
 
   protected temperaments = {
-    sanguine: new SanguineTemperament(),
-    melancholic: new MelancholicTemperament(),
-    choleric: new CholericTemperament(),
-    phlematic: new PhlegmaticTemperament()
+    sanguine: SanguineTemperament.getInstance(),
+    melancholic: MelancholicTemperament.getInstance(),
+    choleric: CholericTemperament.getInstance(),
+    phlematic: PhlegmaticTemperament.getInstance()
   }
 
   constructor(system:Nervous) {
@@ -128,7 +156,7 @@ class DefineTemperament {
    * @param {Affinity} affinity The Affinity object is the result of defineTemperament() where execute the Affinity algorithm 
    * @returns {Temperament} Will return the main temperament of the being according to the algorithm
    */
-  private selectTemperament(affinity:Affinity) {
+  private selectTemperament(affinity:Affinity):Temperament | undefined {
 
     const arrayAffinity = Object.values(affinity)
     
@@ -145,7 +173,7 @@ class DefineTemperament {
       case "Phlegmatic":
         return this.temperaments.phlematic
       case "Sanguine":
-        return this.temperaments.sanguine        
+        return this.temperaments.sanguine     
     }
 
   } 
