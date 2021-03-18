@@ -4,7 +4,11 @@ type EmotionObject = {
   valencia:number,
   intensity:number
 }
-
+type EmotionalState = {
+  [key:string]: number,
+  valencia: number,
+  intensity: number
+} 
 type EmotionValues = {
   [key:string]: number
 }
