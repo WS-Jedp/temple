@@ -1,11 +1,19 @@
-import { Emotion } from '../emotions/base';
-import { Feeling } from '../feelings/base';
+import { Emotion, EmotionValues } from '../emotions/base';
+import { Feeling, FeelingValues } from '../feelings/base';
 import { Intelligence } from '../intelligences/base';
 
 
 type CapacityIntelligences = {
   [key:string]: Intelligence
 }
+type CapactyEmotionalValues = {
+  [key:string]: FeelingValues | EmotionValues,
+}
+type CapacityEmotional = {
+  [key:string]: Emotion | Feeling,
+  emotion: Emotion,
+  feeling: Feeling
+} 
 
 /**
  * The Capacity class will define the capacities that can have a being, each capacity should be relate to:
@@ -18,13 +26,13 @@ type CapacityIntelligences = {
  */
  class Capacity {
 
-   protected _name:string
-   private _emotion:Emotion | undefined
-   protected _skill: number = 0
+  protected _name:string
+  protected _skill: number = 0
+   
+  private _emotion:Emotion | undefined
+  private _feeling: Feeling | undefined
   
-  protected intelligences:CapacityIntelligences = {}
-  protected feeling: Feeling | undefined
-  
+  private _intelligences:CapacityIntelligences = {}
   /**
    * Create a new instance of Capacity, helpful to create a more personalize Capacity according to the being
    * 
@@ -73,15 +81,53 @@ type CapacityIntelligences = {
    * @returns 
    */
     public setFeeling(feeling:Feeling):Capacity {
-      this.feeling = feeling
+      this._feeling = feeling
       return this
+    }
+
+    /**
+     * Get and know the feeling that is related to the capacity
+     * 
+     * @returns {Feeling | undefined} Will return current feeling relate to the capacity
+     */
+    public get feeling():Feeling | undefined {
+      return this._feeling
+    }
+
+  // ------ EMOTIONAL VALUES -------
+    /**
+     * Get the emotional values of the capacity
+     * @returns {CapactyEmotionalValues | undefined} Returns the an Obejct with the emotional values of the capacity (Emotion and feeling) in case that there is no Emotion or Feeling the value returned will undefined
+     */
+    public getEmotionalValues():CapactyEmotionalValues | undefined {
+      if(this._emotion && this._feeling) {
+        return {
+          [this._emotion.name]: this._emotion.getEmotionalValues(),
+          [this._feeling.name]: this._feeling.getEmotionalValues()
+        }
+      }
+    }
+  
+    /**
+     * Set all the new emotional state of the capacity and his values
+     * 
+     * @param {CapacityEmotional} emotional Set all the emotioanl values with a new Emotion and a new Feeling 
+     * @returns {CapacityEmotional} Returns the current new emotional state of teh capacity
+     */
+    public setEmotionalValues(emotional:CapacityEmotional):CapacityEmotional {
+      const { emotion, feeling } = emotional
+      this._emotion = emotion
+      this._feeling = feeling
+      return {
+        emotion: this._emotion,
+        feeling: this._feeling
+      }
     }
 
     
 
 
   // ------ SKILLS SECTION -------
-
   /**
    * Set the new value of the skill of the capacity
    * 
@@ -127,9 +173,9 @@ type CapacityIntelligences = {
    * */
   public addIntelligence(...intelligences:Intelligence[]):CapacityIntelligences {
     intelligences.forEach(intelligence => {
-      this.intelligences[intelligence.getName()] = intelligence
+      this._intelligences[intelligence.getName()] = intelligence
     });
-    return this.intelligences
+    return this._intelligences
   }
 
   /**
@@ -138,8 +184,8 @@ type CapacityIntelligences = {
    * @param {string} name The exact name of the Intelligence that we need to delete
    */
   public removeIntelligence(name:string):CapacityIntelligences {
-    delete this.intelligences[name]
-    return this.intelligences
+    delete this._intelligences[name]
+    return this._intelligences
   }
 
   /**
@@ -148,7 +194,7 @@ type CapacityIntelligences = {
    * @returns {Intelligence[]} Will return all the intelligences that are related to the capacity
    */
   public getIntelligences():Intelligence[]{
-    return Object.values(this.intelligences)
+    return Object.values(this._intelligences)
   }
 }
 export {

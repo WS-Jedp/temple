@@ -1,4 +1,4 @@
-import { Feeling } from "@Feelings/types";
+import { Feeling } from "../feelings/base";
 
 class Principle {
 

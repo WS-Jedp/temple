@@ -1,5 +1,5 @@
-import { Motivation } from '@Motivation/types'
-import { Feeling } from 'being/feeling/types'
+import { Motivation } from '../motivations/base'
+import { Feeling } from '../feelings/base'
 
 type WillObject = {
 	[key:string]: string | Motivation | Feeling[];

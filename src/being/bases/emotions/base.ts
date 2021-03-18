@@ -54,7 +54,7 @@ class Emotion {
    * 
    * @returns {EmotionValues} Returns an object with the defined values at the moment of his creation 
    */
-  public getValues():EmotionValues {
+  public getEmotionalValues():EmotionValues {
     const values = {
       valencia: this._valencia,
       intensity: this._intensity
@@ -72,7 +72,7 @@ class Emotion {
   public setValues({valencia, intensity}:EmotionValues):EmotionValues {
     this._valencia = valencia
     this._intensity = intensity
-    return this.getValues()
+    return this.getEmotionalValues()
   }
 }
 

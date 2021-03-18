@@ -1,4 +1,4 @@
-import { Principle } from "being/bases/principle/index"
+import { Principle } from "../principle/base"
 
 abstract class Motivation {
   protected principles:Principle[]

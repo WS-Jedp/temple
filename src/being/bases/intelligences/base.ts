@@ -1,4 +1,4 @@
-import { Capacity } from '@Capacity/types'
+import { Capacity } from '../capacities/base'
 
 /**
  * The Intelligence abstract class will define the main structure of the 8 types of intelligences that can have a being
@@ -63,7 +63,7 @@ abstract class Intelligence {
    */
   removeCapacity(value:string):Capacity[] {
 
-    const newCapacities = this.capacities.filter(capacity =>  capacity.getName() !== value)
+    const newCapacities = this.capacities.filter(capacity =>  capacity.name !== value)
     this.capacities = newCapacities
 
     return this.capacities

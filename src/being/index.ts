@@ -1,12 +1,12 @@
-import { Math } from '@Capacity/index'
+import { Math } from './bases/capacities'
 import { Will, WillObject } from './bases/wills/base'
-import { Intelligence } from '@Intelligence/types';
+import { Intelligence } from './bases/intelligences/base';
 import { Principle } from './bases/principle/base'
 import { Personality } from './bases/personality';
-import { Capacity } from '@Capacity/types';
-import { Nervous,  } from './systems';
-import { Feeling } from './feeling/types'
-import { Motivation } from '@Motivation/types';
+import { Capacity } from './bases/capacities/base';
+import { Nervous } from './bases/systems';
+import { Feeling } from './bases/feelings/base'
+import { Motivation } from './bases/motivations/base';
 
 
 
@@ -76,12 +76,12 @@ class Being {
     return this.capacities
   }
   public addCapacity(capacity:Capacity):Capacity[] {
-    this.capacities[capacity.getName()] = capacity
+    this.capacities[capacity.name] = capacity
     return Object.values(this.capacities)
   }
   public addCapacities(...capacities:Capacity[]):Capacity[] {
     capacities.forEach(capacity => {
-      this.capacities[capacity.getName()]= capacity
+      this.capacities[capacity.name]= capacity
     });
     return Object.values(this.capacities)
   }
