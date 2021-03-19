@@ -2,19 +2,22 @@ import { Logical } from './being/bases/intelligences'
 import { Being } from './being'
 import { Math } from './being/bases/capacities'
 import { Capacity } from './being/bases/capacities/base'
-import { Happinness } from './being/bases/emotions'
-import { Love } from './being/bases/feelings'
+import { Ecstasy } from './being/bases/emotions'
+import { Feeling } from './being/bases/feelings/base'
 
+
+const joyful = new Feeling({
+  name: 'Joyful',
+  intensity: .8,
+  valencia: .9,
+  emotions: [
+    Ecstasy.getDefault(),
+  ]
+})
 const me = new Being()
 const run = new Capacity('Run')
+run.setFeeling(joyful)
 
-run.addIntelligence(Logical.getInstance())
-const math = Math.getInstance()
-const happinness = new Happinness(1,1) 
-run.skill = .9
-run.getIntelligences()
 
-run.setEmotion(happinness)
-const emoRun = run.emotion
 console.log(run.getEmotionalValues())
 

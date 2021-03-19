@@ -7,6 +7,7 @@ import { Capacity } from './bases/capacities/base';
 import { Nervous } from './bases/systems';
 import { Feeling } from './bases/feelings/base'
 import { Motivation } from './bases/motivations/base';
+import { Ability } from './bases/abilities/base';
 
 
 
@@ -16,6 +17,9 @@ type BeingSystems = {
 
 type BeingCapacities = {
   [key:string]: Capacity
+}
+type BeingAbilities = {
+  [key:string]: Ability
 }
 
 type BeingPrinciples = {
@@ -38,6 +42,7 @@ class Being {
   protected personality:Personality
   protected principles:BeingPrinciples = {}
   protected capacities:BeingCapacities = {}
+  protected abilities:BeingAbilities = {}
   protected wills:BeingWill = {}
   // protected motivations:BeingMotivations = {}
   
@@ -88,6 +93,25 @@ class Being {
   public removeCapacity(name:string):Capacity[] {
     delete this.capacities[name]
     return Object.values(this.capacities)
+  }
+
+  // --------- ABILITIES SECTION -------------
+  public getAbilities():BeingAbilities {
+    return this.abilities
+  }
+  public addAbility(abiltiy:Ability):Ability[] {
+    this.abilities[abiltiy.name] = abiltiy
+    return Object.values(this.abilities)
+  }
+  public addAbilities(...abilities:Ability[]):Ability[] {
+    abilities.forEach(ability => {
+      this.abilities[ability.name]= ability
+    });
+    return Object.values(this.abilities)
+  }
+  public removeAbility(name:string):Ability[] {
+    delete this.abilities[name]
+    return Object.values(this.abilities)
   }
 
   // --------- PRINCIPLES SECTION -------------

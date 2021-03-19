@@ -1,20 +1,31 @@
 import { Capacity } from '../capacities/base'
+import { Ability } from '../abilities/base'
+
+type IntelligenceCapacities = {
+  [key:string]: Capacity
+}
+type IntelligenceAbilities = {
+  [key:string]: Ability
+}
 
 /**
  * The Intelligence abstract class will define the main structure of the 8 types of intelligences that can have a being
  * This class will be  base of the rest of the Intelligence that are the:
- * - Logical
- * - Natural
- * - Space
- * - Knistetic
- * - Lingüistic
- * - Music
- * - Intrapersonal
- * - Interpersonal
+ * - @module Logical
+ * - @module Natural
+ * - @module Spatial
+ * - @module Knistetic
+ * - @module Linguistic
+ * - @module Musical
+ * - @module Intrapersonal
+ * - @module Interpersonal
+ * 
+ * @class
  */
-abstract class Intelligence {
+class Intelligence {
   private name:string
-  protected capacities:Capacity[] = []
+  protected capacities:IntelligenceCapacities = {}
+  protected abilities:IntelligenceAbilities = {}
 
   /**
    * Create a new intelligence that can have a being
@@ -35,13 +46,14 @@ abstract class Intelligence {
   }
 
 
+  // --------- CAPACITIES SECTION ---------
   /**
    * Get all the capacities that relate to the intelligence
    * 
    * @returns {Capacity[]} Returns an array with all the capacities of the Intelligence
    */
   public getCapacities():Capacity[] {
-    return this.capacities
+    return Object.values(this.capacities)
   }
 
   /**
@@ -50,26 +62,57 @@ abstract class Intelligence {
    * @param {Capacity} capacity Define the new capacity that will be added to the Intelligence
    * @returns {Capacity[]} Will return all the current capacities of the Intelligence
    */
-  addCapacity(capacity:Capacity):Capacity[] {
-    this.capacities.push(capacity)
-    return this.capacities
+  public addCapacity(capacity:Capacity):Capacity[] {
+    this.capacities[capacity.name] = capacity
+    return Object.values(this.capacities)
   }
 
   /**
    * Remove one of the current capacities of the Intelligence
    * 
-   * @param {string} value Pass the name of the Capacity that you want to remove
+   * @param {string} name Pass the name of the Capacity that you want to remove
    * @returns {Capacity[]} Will return the new current capacities that have the Intelligence
    */
-  removeCapacity(value:string):Capacity[] {
+  removeCapacity(name:string):Capacity[] {
+    delete this.capacities[name]
+    return Object.values(this.capacities)
+  }
 
-    const newCapacities = this.capacities.filter(capacity =>  capacity.name !== value)
-    this.capacities = newCapacities
 
-    return this.capacities
+  // --------- CAPACITIES SECTION ---------
+  /**
+   * Get all the Abilities that are relate to the intelligence
+   * 
+   * @returns {Ability[]} Returns an array with all the abilities of the Intelligence
+   */
+  public getAbilities():Ability[] {
+    return Object.values(this.abilities)
+  }
+
+  /**
+   * Add a new Ability to the Intelligence 
+   * 
+   * @param {Ability} Ability Define a new Ability that will be added to the Intelligence
+   * @returns {Ability[]} Will return all the current abilities of the Intelligence
+   */
+  public addAbility(ability:Ability):Ability[] {
+    this.abilities[ability.name] = ability
+    return Object.values(this.abilities)
+  }
+
+  /**
+   * Remove one of the current abilities of the Intelligence
+   * 
+   * @param {string} name Pass the name of the Ability that you want to remove
+   * @returns {Ability[]} Will return the new current abilities that have the Intelligence
+   */
+  removeAbility(name:string):Ability[] {
+    delete this.abilities[name]
+    return Object.values(this.abilities)
   }
 } 
 
 export {
-  Intelligence
+  Intelligence,
+  IntelligenceCapacities
 }

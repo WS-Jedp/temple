@@ -3,15 +3,10 @@ import { Math, Reasoning } from '../capacities/index'
 import { Intelligence } from './base'
 
 /**
- * The Logic Intelligence will is one of the 8 types of intelligences that can have a being. This one will help to the being to be more comfortable with activities or actions related to:
- * - Logical
- * - Natural
- * - Space
- * - Knistetic
- * - Lingüistic
- * - Music
- * - Intrapersonal
- * - Interpersonal
+ * The Logic Intelligence is one of the 8 intelligences that can have a being. Each intelligence is related by default to some capacities. 
+ * The default capacities of the Logical Intelligence are:
+ * - @module Math
+ * - @module Reasoning
  */
 class Logical extends Intelligence {
 
@@ -39,7 +34,7 @@ class Logical extends Intelligence {
     }
 
   /**
-   * Will define the default capacities that will Have an intelligence
+   * If for some reason we want or need to change the default values this method will define the default capacities that will Have an intelligence
    * 
    * @param {Capacity[]} capacities Add all the capacities that are relate to the intelligence  
    */
