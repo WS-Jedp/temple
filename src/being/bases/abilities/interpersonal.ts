@@ -1,4 +1,5 @@
 import { Ability } from './base'
+import { Interpersonal, Linguistic } from '../intelligences/extends'
 import { Intelligence } from '../intelligences/base'
 
 // --------- LEAD ABILITY --------- 
@@ -24,7 +25,7 @@ class Lead extends Ability {
       Lead.instance = new Lead()
 
       // Adding the default intelligences
-      Lead.setDefaultIntelligences()
+      Lead.setDefaultIntelligences(Interpersonal.getInstance(), Linguistic.getInstance())
     }
 
     return this.instance
@@ -76,7 +77,7 @@ class Lead extends Ability {
       Express.instance = new Express()
 
       // Adding the default intelligences
-      Express.setDefaultIntelligences()
+      Express.setDefaultIntelligences(Interpersonal.getInstance(), Linguistic.getInstance())
     }
 
     return this.instance

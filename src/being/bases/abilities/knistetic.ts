@@ -1,5 +1,6 @@
 import { Ability } from './base'
 import { Intelligence } from '../intelligences/base'
+import { Knistetic, Linguistic } from '../intelligences/extends'
 
 // --------- RUN ABILITY --------- 
 /**
@@ -24,7 +25,7 @@ class Run extends Ability {
       Run.instance = new Run()
 
       // Adding the default intelligences
-      Run.setDefaultIntelligences()
+      Run.setDefaultIntelligences(Knistetic.getInstance())
     }
 
     return this.instance
@@ -75,7 +76,7 @@ class Gymnastics extends Ability {
       Gymnastics.instance = new Gymnastics()
 
       // Adding the default intelligences
-      Gymnastics.setDefaultIntelligences()
+      Gymnastics.setDefaultIntelligences(Knistetic.getInstance())
     }
     return this.instance
   }
@@ -126,7 +127,7 @@ class Gymnastics extends Ability {
       Dance.instance = new Dance()
 
       // Adding the default intelligences
-      Dance.setDefaultIntelligences()
+      Dance.setDefaultIntelligences(Knistetic.getInstance(), Linguistic.getInstance())
     }
     return this.instance
   }
@@ -178,7 +179,7 @@ class Gymnastics extends Ability {
       MartialArt.instance = new MartialArt()
 
       // Adding the default intelligences
-      MartialArt.setDefaultIntelligences()
+      MartialArt.setDefaultIntelligences(Knistetic.getInstance())
     }
     return this.instance
   }
@@ -229,7 +230,7 @@ class Gymnastics extends Ability {
       Calisthenics.instance = new Calisthenics()
 
       // Adding the default intelligences
-      Calisthenics.setDefaultIntelligences()
+      Calisthenics.setDefaultIntelligences(Knistetic.getInstance())
     }
     return this.instance
   }

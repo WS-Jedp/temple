@@ -1,5 +1,6 @@
 import { Ability } from './base'
 import { Intelligence } from '../intelligences/base'
+import { Natural } from '../intelligences/extends'
 
 // --------- PLANT ABILITY --------- 
 /**
@@ -24,7 +25,7 @@ class Plant extends Ability {
       Plant.instance = new Plant()
 
       // Adding the default intelligences
-      Plant.setDefaultIntelligences()
+      Plant.setDefaultIntelligences(Natural.getInstance())
     }
 
     return this.instance

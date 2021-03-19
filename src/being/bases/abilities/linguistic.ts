@@ -1,6 +1,6 @@
 import { Ability } from './base'
 import { Intelligence } from '../intelligences/base'
-
+import { Interpersonal, Linguistic } from '../intelligences/extends'
 // --------- WRITING ABILITY --------- 
 /**
  * Writing Ability is the one of the default capacities created that can have a being. All default capacities have default intelligences, in this case the default Intelligences of Writing Ability are:
@@ -24,7 +24,7 @@ class Writing extends Ability {
       Writing.instance = new Writing()
 
       // Adding the default intelligences
-      Writing.setDefaultIntelligences()
+      Writing.setDefaultIntelligences(Linguistic.getInstance(), Interpersonal.getInstance())
     }
 
     return this.instance
@@ -75,7 +75,7 @@ class Reading extends Ability {
       Reading.instance = new Reading()
 
       // Adding the default intelligences
-      Reading.setDefaultIntelligences()
+      Reading.setDefaultIntelligences(Linguistic.getInstance())
     }
     return this.instance
   }
@@ -126,7 +126,7 @@ class Reading extends Ability {
       Speaker.instance = new Speaker()
 
       // Adding the default intelligences
-      Speaker.setDefaultIntelligences()
+      Speaker.setDefaultIntelligences(Linguistic.getInstance(), Interpersonal.getInstance())
     }
     return this.instance
   }

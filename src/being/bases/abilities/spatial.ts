@@ -1,6 +1,6 @@
 import { Ability } from './base'
 import { Intelligence } from '../intelligences/base'
-
+import { Spatial } from '../intelligences/extends'
 // --------- DRAW ABILITY --------- 
 /**
  * Draw Ability is the one of the default capacities created that can have a being. All default capacities have default intelligences, in this case the default Intelligences of Draw Ability are:
@@ -24,7 +24,7 @@ class Draw extends Ability {
       Draw.instance = new Draw()
 
       // Adding the default intelligences
-      Draw.setDefaultIntelligences()
+      Draw.setDefaultIntelligences(Spatial.getInstance())
     }
 
     return this.instance
@@ -75,7 +75,7 @@ class Driving extends Ability {
       Driving.instance = new Driving()
 
       // Adding the default intelligences
-      Driving.setDefaultIntelligences()
+      Driving.setDefaultIntelligences(Spatial.getInstance())
     }
     return this.instance
   }
@@ -126,7 +126,7 @@ class Driving extends Ability {
       Sculpt.instance = new Sculpt()
 
       // Adding the default intelligences
-      Sculpt.setDefaultIntelligences()
+      Sculpt.setDefaultIntelligences(Spatial.getInstance())
     }
     return this.instance
   }

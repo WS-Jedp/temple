@@ -1,4 +1,5 @@
 import { Ability } from './base'
+import { Intrapersonal } from '../intelligences/extends'
 import { Intelligence } from '../intelligences/base'
 
 // --------- INDEPENDENCE ABILITY --------- 
@@ -24,7 +25,7 @@ class Independence extends Ability {
       Independence.instance = new Independence()
 
       // Adding the default intelligences
-      Independence.setDefaultIntelligences()
+      Independence.setDefaultIntelligences(Intrapersonal.getInstance())
     }
 
     return this.instance

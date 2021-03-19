@@ -1,5 +1,6 @@
 import { Ability } from './base'
 import { Intelligence } from '../intelligences/base'
+import { Musical } from '../intelligences/extends'
 
 // --------- MUSICAL INTERPRETATION ABILITY --------- 
 /**
@@ -24,7 +25,7 @@ class MusicalInterpretation extends Ability {
       MusicalInterpretation.instance = new MusicalInterpretation()
 
       // Adding the default intelligences
-      MusicalInterpretation.setDefaultIntelligences()
+      MusicalInterpretation.setDefaultIntelligences(Musical.getInstance())
     }
 
     return this.instance
@@ -75,7 +76,7 @@ class MusicalInstrument extends Ability {
       MusicalInstrument.instance = new MusicalInstrument()
 
       // Adding the default intelligences
-      MusicalInstrument.setDefaultIntelligences()
+      MusicalInstrument.setDefaultIntelligences(Musical.getInstance())
     }
     return this.instance
   }
@@ -126,7 +127,7 @@ class MusicalInstrument extends Ability {
       Sing.instance = new Sing()
 
       // Adding the default intelligences
-      Sing.setDefaultIntelligences()
+      Sing.setDefaultIntelligences(Musical.getInstance())
     }
     return this.instance
   }
