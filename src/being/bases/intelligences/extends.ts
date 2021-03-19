@@ -27,7 +27,6 @@ class Logical extends Intelligence {
   // The current space on memory of our Instance
   private static instance: Logical
   private static defaultAbilities: Ability[] = []
-
   private constructor() {
     super('Logical')
   }
@@ -389,7 +388,7 @@ class Musical extends Intelligence {
 
   // The current space on memory of our Instance
   private static instance: Interpersonal
-  private static defaultAbilities: Ability[] = []
+  public static defaultAbilities: Ability[] = []
 
   private constructor() {
     super('Interpersonal')

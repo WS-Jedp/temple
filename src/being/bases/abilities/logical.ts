@@ -1,5 +1,5 @@
 import { Ability } from './base'
-import { Logical } from '../intelligences/index'
+import { Logical } from '../intelligences/extends'
 import { Intelligence } from '../intelligences/base'
 
 // --------- MATH ABILITY --------- 

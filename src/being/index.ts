@@ -150,6 +150,12 @@ class Being {
     return Object.values(this.wills)
   }
 
+  // --------- EMOTIONAL STATE AND VALUES SECTION -------------
+  public getEmotionalState() {
+    this.personality.getEmotionalState()
+  }
+
+
   // // --------- WILL SECTION -------------
   // public getMotivations():Motivation[] {
   //   return Object.values(this.motivations)

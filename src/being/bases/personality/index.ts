@@ -5,9 +5,13 @@ import { Nervous } from '../systems'
 import { Temperament } from '../temperaments/base'
 import { DefineTemperament } from '../temperaments'
 
+type PersonalitySecondaryIntelligences = {
+  [key:string]: Intelligence
+}
+
 type IntelligencesPersonality = {
   primary: Intelligence | undefined,
-  secondaries: Intelligence[] | undefined
+  secondaries: PersonalitySecondaryIntelligences
 }
 
 class Personality {
@@ -16,7 +20,7 @@ class Personality {
   protected temperament:Temperament | undefined
   protected intelligences:IntelligencesPersonality = {
     primary: undefined,
-    secondaries: []
+    secondaries: {}
   }
 
 
@@ -25,29 +29,68 @@ class Personality {
 
     return undefined
   }
-  public setTemperament(system:Nervous):Temperament {
-    const temperament = new DefineTemperament(system).defineTemperament()
+
+  public setTemperament(temperament:Temperament):Temperament {
     this.temperament = temperament
     return this.temperament
+  }
+
+  public getTypeTemperament(system:Nervous):Temperament {
+    const temperament = new DefineTemperament(system).defineTemperament()
+    return temperament
   }
 
   public getCharacter():Character | undefined {
     return this.character ? this.character : undefined
   }
-  public setCharacter(emotionality:number, activity:number, repercussion:number):Character {
-    const beingCharacter = new DefineCharacter({emotionality, activity, repercussion}).defineCharacter()
-    this.character = beingCharacter
+
+  public setCharacter(character:Character):Character {
+    this.character = character
     return this.character
   }
 
-  public setMainIntelligence(intelligence:Intelligence):IntelligencesPersonality {
+  public getTypeCharacter(emotionality:number, activity:number, repercussion:number):Character {
+    const character = new DefineCharacter({emotionality, activity, repercussion}).defineCharacter()
+    return character
+  }
+
+
+  public getMainIntelligence():Intelligence | undefined {
+    return this.intelligences.primary
+  }
+
+  public getSecondariesIntelligences():Intelligence[] {
+    return Object.values(this.intelligences.secondaries)
+  }
+
+  public setMainIntelligence(intelligence:Intelligence):Intelligence {
     this.intelligences.primary = intelligence
-    return this.intelligences
+    return this.intelligences.primary
   }
 
   public addSecondaryIntelligence(intelligence:Intelligence):Intelligence[] {
-    this.intelligences.secondaries?.push(intelligence)
-    return this.intelligences.secondaries ? this.intelligences.secondaries : [] 
+    this.intelligences.secondaries[intelligence.getName()] = intelligence
+    return Object.values(this.intelligences.secondaries)
+  }
+
+  public removeSecondaryIntelligence(name:string):Intelligence[] {
+    delete this.intelligences.secondaries[name]
+    return Object.values(this.intelligences.secondaries)
+  }
+
+  public getEmotionalState() {
+    const temperament = this.getTemperament()?.getCharacteristics()
+    const character = this.getCharacter()?.getCharacteristics()
+    const mainIntelligence = this.getMainIntelligence()?.getName()
+
+    const emotionalState = {
+      temperament,
+      character,
+      mainIntelligence
+    }
+
+    return emotionalState
+
   }
 
   

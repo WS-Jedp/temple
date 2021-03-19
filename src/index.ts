@@ -1,23 +1,17 @@
-import { Logical } from './being/bases/intelligences'
+import { Ability } from './being/bases/abilities/base'
 import { Being } from './being'
-import { Math } from './being/bases/capacities'
-import { Capacity } from './being/bases/capacities/base'
-import { Ecstasy } from './being/bases/emotions'
-import { Feeling } from './being/bases/feelings/base'
+import  Intelligences  from './being/bases/intelligences'
 
-
-const joyful = new Feeling({
-  name: 'Joyful',
-  intensity: .8,
-  valencia: .9,
-  emotions: [
-    Ecstasy.getDefault(),
-  ]
-})
 const me = new Being()
-const run = new Capacity('Run')
-run.setFeeling(joyful)
+
+const basketball = new Ability('Basketaball')
+basketball.addIntelligence(Intelligences.Interpersonal.getInstance())
+basketball.name
+
+Intelligences.Interpersonal.setDefaultAbilities(basketball)
+
+const intelligence = Intelligences.Interpersonal.getInstance()
 
 
-console.log(run.getEmotionalValues())
-
+// console.log(intelligence.primary?.getAbilities())
+console.log(Intelligences.Interpersonal.defaultAbilities)

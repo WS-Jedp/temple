@@ -79,7 +79,8 @@ class Intelligence {
   }
 
 
-  // --------- CAPACITIES SECTION ---------
+  // --------- ABILITY SECTION ---------
+
   /**
    * Get all the Abilities that are relate to the intelligence
    * 
