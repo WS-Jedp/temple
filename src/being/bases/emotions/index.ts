@@ -1,4 +1,4 @@
-import { Emotion } from './base'
+import { DefaultEmotion } from './extends'
 
 /**
  * A Terror Emotion is one the 8 original or atomic emotions that can have or feel a being is characterized for:
@@ -7,9 +7,9 @@ import { Emotion } from './base'
  * 
  * @class 
  */
-class Terror extends Emotion {  
+class Terror extends DefaultEmotion {  
   // Define the default values that characterize the Terror class
-  private static _deafultValencia:number = .2 
+  private static _defaultValencia:number = .2 
   private static _defaultIntensity:number = .8
   private static instanceDefault:Terror | undefined
   
@@ -21,15 +21,15 @@ class Terror extends Emotion {
    * 
    * @returns {Terror} Returns the a new instance of the Terror Emotion
    */
-  constructor(valencia:number = Terror._deafultValencia, intensity: number = Terror._defaultIntensity) {
-    super({name: 'Terror', valencia, intensity})
+  constructor(intensity: number = Terror._defaultIntensity) {
+    super({name: 'Terror', valencia: Terror._defaultValencia, intensity})
   }
 
   /**
    * Get the default emotional values of Terror Class
    * @returns {Terror} Return the unique Default Terror values
    */
-  public static getDefault():Terror {
+  public static getInstance():Terror {
     if(!this.instanceDefault) {
       this.instanceDefault = new Terror()
     }
@@ -46,10 +46,10 @@ class Terror extends Emotion {
  * 
  * @class 
  */
-class Ecstasy extends Emotion {
+class Ecstasy extends DefaultEmotion {
 
   // Define the default values that characterize the Ecstasy class
-  private static _deafultValencia:number = .9
+  private static _defaultValencia:number = .9
   private static _defaultIntensity:number = .5
   private static defaultInstance:Ecstasy | undefined
 
@@ -61,15 +61,15 @@ class Ecstasy extends Emotion {
    * 
    * @returns {Fear} Returns the a new instance of the Ecstasy Emotion
    */
-  constructor(valencia:number = Ecstasy._deafultValencia, intensity:number = Ecstasy._defaultIntensity) {
-    super({name: 'Ecstasy', valencia, intensity})
+  constructor(intensity:number = Ecstasy._defaultIntensity) {
+    super({name: 'Ecstasy', valencia: Ecstasy._defaultValencia, intensity})
   }
 
   /**
    * Get the default emotional values of Ecstasy Class
    * @returns {Ecstasy} Returns the unique instance of he default values of the Ecstasy emotions
    */
-  public static getDefault():Ecstasy {
+  public static getInstance():Ecstasy {
     if(!this.defaultInstance) {
       this.defaultInstance = new Ecstasy()
     }
@@ -86,10 +86,10 @@ class Ecstasy extends Emotion {
  * 
  * @class 
  */
-class Grief extends Emotion {
+class Grief extends DefaultEmotion {
 
   // Define the default values that characterize the Grief class
-  private static _deafultValencia:number = .2
+  private static _defaultValencia:number = .2
   private static _defaultIntensity:number = .5
   private static defaultInstance:Grief | undefined
 
@@ -101,15 +101,15 @@ class Grief extends Emotion {
    * 
    * @returns {Fear} Returns the a new instance of the Grief Emotion
    */
-  constructor(valencia:number = Grief._deafultValencia, intensity:number = Grief._defaultIntensity) {
-    super({name: 'Grief', valencia, intensity})
+  constructor(intensity:number = Grief._defaultIntensity) {
+    super({name: 'Grief', valencia:  Grief._defaultValencia, intensity})
   }
 
   /**
    * Get the default emotional values of Grief Class
    * @returns {Grief} Returns the unique instance of he default values of the Grief emotions
    */
-  public static getDefault():Grief {
+  public static getInstance():Grief {
     if(!this.defaultInstance) {
       this.defaultInstance = new Grief()
     }
@@ -127,10 +127,10 @@ class Grief extends Emotion {
  * 
  * @class 
  */
- class Loathing extends Emotion {
+ class Loathing extends DefaultEmotion {
 
   // Define the default values that characterize the Loathing class
-  private static _deafultValencia:number = .2
+  private static _defaultValencia:number = .2
   private static _defaultIntensity:number = .7
   private static defaultInstance:Loathing | undefined
 
@@ -142,15 +142,15 @@ class Grief extends Emotion {
    * 
    * @returns {Fear} Returns the a new instance of the Loathing Emotion
    */
-  constructor(valencia:number = Loathing._deafultValencia, intensity:number = Loathing._defaultIntensity) {
-    super({name: 'Loathing', valencia, intensity})
+  constructor(intensity:number = Loathing._defaultIntensity) {
+    super({name: 'Loathing', valencia: Loathing._defaultValencia, intensity})
   }
 
   /**
    * Get the default emotional values of Loathing Class
    * @returns {Loathing} Returns the unique instance of he default values of the Loathing emotions
    */
-  public static getDefault():Loathing {
+  public static getInstance():Loathing {
     if(!this.defaultInstance) {
       this.defaultInstance = new Loathing()
     }
@@ -167,10 +167,10 @@ class Grief extends Emotion {
  * 
  * @class 
  */
- class Rage extends Emotion {
+ class Rage extends DefaultEmotion {
 
   // Define the default values that characterize the Rage class
-  private static _deafultValencia:number = .1 
+  private static _defaultValencia:number = .1 
   private static _defaultIntensity:number = .9
   private static defaultInstance:Rage | undefined
 
@@ -182,15 +182,15 @@ class Grief extends Emotion {
    * 
    * @returns {Fear} Returns the a new instance of the Rage Emotion
    */
-  constructor(valencia:number = Rage._deafultValencia, intensity:number = Rage._defaultIntensity) {
-    super({name: 'Rage', valencia, intensity})
+  constructor(intensity:number = Rage._defaultIntensity) {
+    super({name: 'Rage', valencia: Rage._defaultValencia, intensity})
   }
 
   /**
    * Get the default emotional values of Rage Class
    * @returns {Rage} Returns the unique instance of he default values of the Rage emotions
    */
-  public static getDefault():Rage {
+  public static getInstance():Rage {
     if(!this.defaultInstance) {
       this.defaultInstance = new Rage()
     }
@@ -206,10 +206,10 @@ class Grief extends Emotion {
  * 
  * @class 
  */
- class Amazement extends Emotion {
+ class Amazement extends DefaultEmotion {
 
   // Define the default values that characterize the Amazement class
-  private static _deafultValencia:number = .5
+  private static _defaultValencia:number = .5
   private static _defaultIntensity:number = .7
   private static defaultInstance:Amazement | undefined
 
@@ -221,15 +221,15 @@ class Grief extends Emotion {
    * 
    * @returns {Fear} Returns the a new instance of the Amazement Emotion
    */
-  constructor(valencia:number = Amazement._deafultValencia, intensity:number = Amazement._defaultIntensity) {
-    super({name: 'Amazement', valencia, intensity})
+  constructor(intensity:number = Amazement._defaultIntensity) {
+    super({name: 'Amazement', valencia: Amazement._defaultValencia, intensity})
   }
 
   /**
    * Get the default emotional values of Amazement Class
    * @returns {Amazement} Returns the unique instance of he default values of the Amazement emotions
    */
-  public static getDefault():Amazement {
+  public static getInstance():Amazement {
     if(!this.defaultInstance) {
       this.defaultInstance = new Amazement()
     }
